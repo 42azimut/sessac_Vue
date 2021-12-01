@@ -4,13 +4,9 @@ const list = document.querySelector('.list');
 
 const likeButtons = document.querySelectorAll('.like');
 
-likeButtons.forEach(like => {
-  like.addEventListener("click", () => {
-    console.log('clicked');
-  })
-})
+function addItem() {
 
-addButton.addEventListener("click", () => {
+  if (inputText.value.trim() === "") return;
   
   // like
   const like = document.createElement("span")
@@ -39,8 +35,38 @@ addButton.addEventListener("click", () => {
 
   const li = document.createElement('li')
 
+  // event
+  like.addEventListener("click", (e) => {
+    const target = e.target;
+    const text = target.innerText === 'favorite' ? "favorite_border" : "favorite";
+    target.innerText = text;
+  })
+
+  checkIcon.addEventListener("click", (e) => {
+    const target = e.target.parentNode.parentNode;
+    target.classList.add('done')
+  })
+
+  clearIcon.addEventListener("click", (e) => {
+    const target = e.target.parentNode.parentNode;
+    list.removeChild(target);
+  })
+
   li.appendChild(like);
   li.appendChild(item);
   li.appendChild(manage)
   list.appendChild(li);
+
+  inputText.value = '';
+  inputText.focus();
+}
+
+
+inputText.addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    addItem()
+  }
 })
+
+addButton.addEventListener("click", addItem)
+
