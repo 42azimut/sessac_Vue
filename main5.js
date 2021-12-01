@@ -31,17 +31,17 @@
 
 // class 사용  ==> 위와 신택스 만 다르고 완전히 같은 기능!
 class Song {
-    constructor(singer, title, release) {
-        this.singer = singer;
-        this.title = title;
-        this.release = new Date(release);
-    }
-    getInfo() {
-        return `이 노래는 ${this.singer}의 노래이고, 제목은 ${this.title} 입니다.`;
-    }
-    getReleaseDay() {
-        return this.release.getDay();
-    }
+  constructor(singer, title, release) {
+  this.singer = singer;
+  this.title = title;
+  this.release = new Date(release);
+}
+  getInfo() {
+    return `이 노래는 ${this.singer}의 노래이고, 제목은 ${this.title} 입니다.`;
+  }
+  getReleaseDay() {
+    return this.release.getDay();
+  }
 }
 
 // 인스턴스화!
