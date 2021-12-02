@@ -84,6 +84,14 @@ header {
   color: salmon;
 }
 
+.check:hover {
+  cursor: pointer;
+}
+
+.clear:hover {
+  cursor: pointer;
+}
+
 .done .item {
   text-decoration: line-through;
 }
