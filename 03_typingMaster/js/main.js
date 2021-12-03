@@ -17,7 +17,7 @@ let isReady = false;
 
 init()
 
-// promse 방식(1) 순서대로 진행! 아래와 같은 기능!
+// promise 방식(1) 순서대로 진행! 아래와 같은 기능!
 // function init() {
 //   const res = fetch(API_URL)
 //     .then((res) => { return res.json() })
