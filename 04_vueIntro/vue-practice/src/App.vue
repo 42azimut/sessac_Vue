@@ -1,36 +1,13 @@
 <template>
   <div>
-    <h1>Hello Vue JS!</h1>
-    <!-- 
-    <div>
-      {{ fruites }}
-    </div>
-    
-    <div>
-     <ul>
-        <li v-for="(fruit, index) in fruites" :key="index">
-          {{ index + 1 }} - {{ fruit }}
+    <h1>Hello Vue JS! 31. 조건부 리스트 랜더링</h1>
+    <ul>
+      <template v-for="(city, index) in cities" :key="index">
+        <li v-if="city.province === '경상도'">
+          {{ city.name }}
         </li>
-
-        <li v-for="(fruit, index) of fruites" :key="index">
-          {{ index + 1 }} - {{ fruit }}
-        </li>
-
-        <h2 v-for="(value, key, index) in user" :key="key">
-          {{ index + 1 }}. {{ key }} == >> {{ value }}
-        </h2>
-
-        <p v-for="n in 10" :key="n">{{ n }}</p>
-      </ul> 
-    </div> -->
-
-    <div v-for="(animal, animalIndex) in animals" :key="animalIndex">
-      <h2>Animal ===> {{ animal.name }}</h2>
-      <h3>food</h3>
-      <li v-for="(food, foodIndex) in animal.favorites" :key="foodIndex">
-        {{ food }}
-      </li>
-    </div>
+      </template>
+    </ul>
   </div>
 </template>
 
@@ -39,20 +16,13 @@ export default {
   name: "App",
   data() {
     return {
-      // fruites: ["apple", "banana", "tomato", "melon", "banana", "tomato"],
-      // user: {
-      //   name: "Jayden",
-      //   age: 200,
-      //   job: "realtor",
-      // },
-      animals: [
-        { name: "monkey", size: "medium", favorites: ["banana", "chiken"] },
-        { name: "lion", size: "big", favorites: ["meat", "beef"] },
-        {
-          name: "rat",
-          size: "small",
-          favorites: ["cheese", "rice", "돼지고기"],
-        },
+      cities: [
+        { name: "서울", province: "경기도" },
+        { name: "대전", province: "충청도" },
+        { name: "부산", province: "경상도" },
+        { name: "경주", province: "경상도" },
+        { name: "송도", province: "경기도" },
+        { name: "광주", province: "전라도" },
       ],
     };
   },
