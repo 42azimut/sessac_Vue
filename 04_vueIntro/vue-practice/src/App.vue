@@ -1,22 +1,57 @@
 <template>
   <div>
-    <h1>Hello Vue JS! 33. 이벤트 핸들링</h1>
-    <h1>{{ name }}</h1>
+    {{ user }}
+    <h1>{{ user.name }}</h1>
+    <hr />
+    <form>
+      <div>
+        <label for="name">이름</label>
+        <input type="text" id="name" v-model="user.name" @input="setValue" />
+      </div>
 
-    <button v-on:click.right="changeName">Change Name</button>
-    <button
-      v-on:mouseover="name = 'code mouseover Azimut'"
-      v-on:mouseleave="name = 'azimut moveLeave'"
-    >
-      Change Name
-    </button>
+      <div>
+        <label for="age">나이</label>
+        <input type="number" id="age" v-model="user.age" />
+      </div>
+      <div>
+        <label for="city">사는 곳</label>
+        <select name="" id="city" v-model="user.city">
+          <option value="seoul">서울</option>
+          <option value="Daejeon">대전</option>
+          <option value="Daegu">대구</option>
+          <option value="busan">부산</option>
+          <option value="gwangjoo">광주</option>
+        </select>
+      </div>
+      <div>
+        <label for="favorite-food"> 좋아하는 음식</label>
+        <select id="favorite-food" multiple v-model="user.favorite">
+          <option
+            v-for="option in foodOptions"
+            :value="option.code"
+            :key="option.code"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="job">직업</label>
+        프로그래머<input
+          type="checkbox"
+          value="programmer"
+          v-model="user.job"
+        />
+        가수<input type="checkbox" value="singer" v-model="user.job" />
+        선생<input type="checkbox" value="teacher" v-model="user.job" />
+      </div>
+      <div>
+        <label for="sex">성별</label>
+        남자<input type="radio" value="male" v-model="user.sex" />
 
-    <a v-on:click.prevent="movePage" href="https://naver.com">네이버로 이동</a>
-    <h2>{{ number }}</h2>
-    <button v-on:click="increament($e, 1)">숫자 증가</button>
-    <button v-on:click="decreament(1)">숫자 감소</button>
-    <button v-on:click="increament(6)">숫자 증가</button>
-    <button v-on:click="decreament(6)">숫자 감소</button>
+        여자<input type="radio" value="female" v-model="user.sex" />
+      </div>
+    </form>
   </div>
 </template>
 
@@ -25,36 +60,46 @@ export default {
   name: "App",
   data() {
     return {
-      name: "Azimut",
-      number: 0,
+      foodOptions: [
+        {
+          label: "짜장면",
+          code: "JJ",
+        },
+        {
+          label: "탕수육",
+          code: "TG",
+        },
+        {
+          label: "짬뽕",
+          code: "BB",
+        },
+      ],
+      user: {
+        name: "Azimut",
+        age: 0,
+        city: "Seoul",
+        favorite: [],
+        job: [],
+        sex: [],
+      },
     };
   },
   methods: {
-    changeName() {
-      this.name = "Code Azimut changed";
-    },
-    movePage() {
-      const check = confirm("패이지를 이동하겠나요?");
-      if (check) {
-        console.log("페이지 이동");
-      } else {
-        console.log("페이지 이동 안함!");
-      }
-    },
-    increament(e, num) {
-      console.log(e);
-      this.number += num;
-    },
-    decreament(num) {
-      this.number -= num;
+    setValue(e) {
+      console.log(e.target.value);
+      this.user.name = e.target.value;
     },
   },
 };
 </script>
 
 <style>
-a {
-  font-size: 25px;
-  display: block;
+label {
+  font-size: 26px;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+div {
+  margin-bottom: 1rem;
 }
 </style>
