@@ -1,9 +1,22 @@
 <template>
   <div>
-    <h1>Hello Vue JS! 32. 메서드</h1>
-    <h2>5년뒤 :: {{ add(5) }}</h2>
-    <h2>동갑의 10명이 있다면 나이 총 합은? {{ multiply(age, 10) }}</h2>
-    <h2>{{ getTotalScore(100) }}</h2>
+    <h1>Hello Vue JS! 33. 이벤트 핸들링</h1>
+    <h1>{{ name }}</h1>
+
+    <button v-on:click.right="changeName">Change Name</button>
+    <button
+      v-on:mouseover="name = 'code mouseover Azimut'"
+      v-on:mouseleave="name = 'azimut moveLeave'"
+    >
+      Change Name
+    </button>
+
+    <a v-on:click.prevent="movePage" href="https://naver.com">네이버로 이동</a>
+    <h2>{{ number }}</h2>
+    <button v-on:click="increament($e, 1)">숫자 증가</button>
+    <button v-on:click="decreament(1)">숫자 감소</button>
+    <button v-on:click="increament(6)">숫자 증가</button>
+    <button v-on:click="decreament(6)">숫자 감소</button>
   </div>
 </template>
 
@@ -12,21 +25,36 @@ export default {
   name: "App",
   data() {
     return {
-      age: 30,
+      name: "Azimut",
+      number: 0,
     };
   },
   methods: {
-    add(num) {
-      return this.age + num;
+    changeName() {
+      this.name = "Code Azimut changed";
     },
-    multiply(num1, num2) {
-      return num1 * num2;
+    movePage() {
+      const check = confirm("패이지를 이동하겠나요?");
+      if (check) {
+        console.log("페이지 이동");
+      } else {
+        console.log("페이지 이동 안함!");
+      }
     },
-    getTotalScore(num) {
-      return this.multiply(num, num);
+    increament(e, num) {
+      console.log(e);
+      this.number += num;
+    },
+    decreament(num) {
+      this.number -= num;
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+a {
+  font-size: 25px;
+  display: block;
+}
+</style>
