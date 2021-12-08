@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h1>Computed</h1>
-    <h2>{{ address }}</h2>
+    <h1>Watchers</h1>
     <h2>
-      내가 받은 점수 합은 {{ grade.math + grade.kor + grade.eng + grade.sci }}
+      Watchers는 데이터에 변경이 일어나는 것을 감지 하는 역할! --> 그리고 어떤
+      작동이 일어남!
     </h2>
-    <h2>*computed* score {{ totalScore }}</h2>
-    <h2>*methods* getTotalScore {{ getTotalScore() }}</h2>
-    영어점수 <input type="number" v-model="grade.eng" /> <br />학생이름
-    <input type="text" v-model="studentName" />
+    <h2>current Money :: {{ money }}</h2>
+    <div>
+      <button @click="money += 100">eran Money</button>
+      <button @click="money -= 100">spand Money</button>
+    </div>
+    <h3>{{ receite }}</h3>
+    <button @click="receite.food += 500">buy Food</button>
+    <hr />
+    <input type="text" v-model="userName" />
   </div>
 </template>
 
@@ -18,35 +23,42 @@ export default {
   data() {
     return {
       userName: "Azimut",
-      address1: "서울",
-      address2: "송파구",
-      address3: "백제고분로",
-
-      grade: {
-        math: 70,
-        kor: 99,
-        eng: 34,
-        sci: 66,
+      money: 0,
+      receite: {
+        food: 3000,
+        fee: 200,
+        fare: 10000,
       },
-      studentName: "",
     };
   },
-  computed: {
-    address() {
-      return `${this.address1} ${this.address2} ${this.address3} `;
-    },
-    totalScore() {
-      console.log("computed");
-      const { math, kor, eng, sci } = this.grade; //this.grade ** this **  cache
-      return math + kor + eng + sci;
-    },
-  },
   directives: {},
-  methods: {
-    getTotalScore() {
-      console.log("methods");
-      const { math, kor, eng, sci } = this.grade; //this.grade ** this **
-      return math + kor + eng + sci;
+  methods: {},
+  computed: {},
+  watch: {
+    userName: {
+      handler(newValue) {
+        console.log("이름 변경 감지", newValue);
+      },
+      immediate: true,
+    },
+    // receite(newValue, oldValue) {
+    //   console.log("영수증 값 변화 감지!", newValue, oldValue);
+    // },
+    receite: {
+      handler(newValue) {
+        console.log("영수증 값 변화 감지", newValue);
+      },
+      deep: true,
+    },
+
+    money(newValue, oldValue) {
+      console.log(oldValue);
+      if (newValue >= 2000 && newValue > oldValue) {
+        console.log("2000원이 넘었어! 미션성공!");
+      }
+      if (oldValue < 1500 && newValue < oldValue) {
+        console.log("돈을 아껴써라!!");
+      }
     },
   },
 };
