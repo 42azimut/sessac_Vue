@@ -1,30 +1,36 @@
 <template>
   <div>
-    <GreetingUser id="greeting" />
+    <h2>Hello Component</h2>
+    <button @click="displayDetail = true">show detail</button>
+    <DetailView
+      v-if="displayDetail"
+      @closeDetail="close"
+      @sendData="showData"
+    />
   </div>
 </template>
 
 <script>
-import GreetingUser from "./components/GreetingUser";
+import DetailView from "./components/DetailView";
 export default {
   name: "App",
   components: {
-    //ProductList,
-    GreetingUser,
+    DetailView,
   },
   data() {
     return {
-      // products: [
-      //   { id: 0, name: "TV", price: 500000, company: "LG" },
-      //   { id: 1, name: "전자렌지", price: 200000, company: "삼성" },
-      //   { id: 2, name: "맥북프로", price: 1500000, company: "애플" },
-      //   { id: 3, name: "책상", price: 150000, company: "이케아" },
-      //   { id: 4, name: "모니터", price: 340000, company: "삼성" },
-      // ],
+      displayDetail: false,
     };
   },
   directives: {},
-  methods: {},
+  methods: {
+    close() {
+      this.displayDetail = false;
+    },
+    showData(data) {
+      console.log(data, " <<= data sent");
+    },
+  },
   computed: {},
   watch: {},
 };
