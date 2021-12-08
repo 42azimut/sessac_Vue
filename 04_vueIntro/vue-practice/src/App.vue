@@ -1,10 +1,10 @@
 <template>
   <div>
-    <GreetingUser :username="username" />
-    <GreetingUser username="dooli" />
-    <GreetingUser username="pororo" />
-    <GreetingUser username="dragon" />
-    <GreetingUser />
+    <GreetingUser
+      :username="username"
+      :numberOfVisit="numberOfVisit"
+      :siteInfo="siteInfo"
+    />
     <button @click="changeName">change</button>
   </div>
 </template>
@@ -19,6 +19,8 @@ export default {
   data() {
     return {
       username: "Azimut",
+      numberOfVisit: undefined,
+      siteInfo: undefined,
     };
   },
   directives: {},
