@@ -1,31 +1,25 @@
 <template>
   <div>
-    <h2>Hello Component</h2>
-    <button @click="activeTab = 'Menu1'">Menu1</button>
-    <button @click="activeTab = 'Menu2'">Memu2</button>
-    <button @click="activeTab = 'Menu3'">Menu3</button>
-    <keep-alive>
-      <component :is="activeTab"></component>
-    </keep-alive>
+    <h2>Hello TelePort</h2>
+    <teleport to="#extra-modal" :disabled="isTeleport">
+      <div class="modal">
+        this is modal window!
+        <button @click="isTeleport = !isTeleport">teleport toggle</button>
+      </div>
+    </teleport>
+    <teleport to="#extra-modal">
+      <div class="modal2">this is modal 2</div>
+    </teleport>
   </div>
 </template>
 
 <script>
-import Menu1 from "./components/tabitems/Menu1";
-import Menu2 from "./components/tabitems/Menu2";
-import Menu3 from "./components/tabitems/Menu3";
 export default {
   name: "App",
-  components: { Menu1, Menu2, Menu3 },
+  components: {},
   data() {
     return {
-      username: "Azimut",
-      activeTab: "Menu1",
-    };
-  },
-  provide() {
-    return {
-      name: this.username,
+      isTeleport: true,
     };
   },
   directives: {},
@@ -35,4 +29,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
