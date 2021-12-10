@@ -1,17 +1,19 @@
 <template>
   <div>
-    <h2>Hello Life Cycle</h2>
-    <ParentComp />
+    <h2>Hello Mixins</h2>
+    <ProductStatus />
+    <FeeStatus />
+    <SavingStatus />
   </div>
 </template>
 
 <script>
-import ParentComp from "./components/lifecycle/ParentComp.vue";
+import ProductStatus from "./components/mixin/ProductStatus";
+import FeeStatus from "./components/mixin/FeeStatus";
+import SavingStatus from "./components/mixin/SavingStatus";
 export default {
   name: "App",
-  components: {
-    ParentComp,
-  },
+  components: { ProductStatus, FeeStatus, SavingStatus },
 
   data() {
     return {};
@@ -22,5 +24,3 @@ export default {
   watch: {},
 };
 </script>
-
-<style></style>
