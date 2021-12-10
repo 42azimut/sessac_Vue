@@ -1,15 +1,18 @@
 <template>
   <div>
-    <h2>Hello HTTP Request</h2>
-    <TodoList />
+    <h2>Hello Life Cycle</h2>
+    <ParentComp />
   </div>
 </template>
 
 <script>
-import TodoList from "./components/http/TodoList.vue";
+import ParentComp from "./components/lifecycle/ParentComp.vue";
 export default {
   name: "App",
-  components: { TodoList },
+  components: {
+    ParentComp,
+  },
+
   data() {
     return {};
   },
@@ -20,4 +23,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style></style>
