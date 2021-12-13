@@ -1,6 +1,11 @@
 <template>
-  <h2>isHandsome ?? {{ isHandsome }}</h2>
-  <h3>{{ job }}</h3>
+  <h2>{{ username }}</h2>
+  <button @click="changeName">Chagnge User Name</button>
+  <h2>제품명 : {{ name }}, 가격: {{ price }}</h2>
+  <button @click="changeProduct">제품 바꾸기</button>
+  <div>
+    <input type="text" v-model="username" />
+  </div>
 </template>
 
 <script>
@@ -8,26 +13,29 @@ import { ref, reactive, toRefs } from "vue";
 export default {
   name: "TestComponent",
   setup() {
-    let isHandsome = ref(false);
+    const username = ref("azimut-ref");
+
+    function changeName() {
+      username.value = "Messsi";
+    }
+
     const state = reactive({
-      name: "Azimut-reactive",
-      age: 33,
-      job: "developer",
+      name: "TV",
+      price: 100,
     });
-    //let isNotUgly = isHandsome;
-    //isHandsome.value = true;
-    //console.log(isNotUgly);
+
+    function changeProduct() {
+      state.name = "세탁기";
+      state.price = 4000;
+    }
+
     return {
-      //isNotUgly,
-      isHandsome,
+      username,
+      changeName,
+      changeProduct,
       ...toRefs(state),
     };
   },
-  // data() {
-  //   return {
-  //     username: "azimut",
-  //   };
-  // },
 };
 </script>
 
