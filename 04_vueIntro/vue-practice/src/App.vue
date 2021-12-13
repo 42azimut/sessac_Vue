@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Hello 48.Composition API</h2>
+    <h2>Hello 52.Composition computed & watch</h2>
   </div>
   <TestComponent />
 </template>
