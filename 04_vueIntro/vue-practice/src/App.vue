@@ -1,19 +1,15 @@
 <template>
   <div>
-    <h2>Hello Mixins</h2>
-    <ProductStatus />
-    <FeeStatus />
-    <SavingStatus />
+    <h2>Hello 48.Composition API</h2>
   </div>
+  <TestComponent />
 </template>
 
 <script>
-import ProductStatus from "./components/mixin/ProductStatus";
-import FeeStatus from "./components/mixin/FeeStatus";
-import SavingStatus from "./components/mixin/SavingStatus";
+import TestComponent from "./components/composition/TestComponent";
 export default {
   name: "App",
-  components: { ProductStatus, FeeStatus, SavingStatus },
+  components: { TestComponent },
 
   data() {
     return {};

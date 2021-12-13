@@ -18,7 +18,7 @@ export default {
   components: {},
   data() {
     return {
-      totalMoney: 3000, //우선 적용 미스인보다.. 초기화 가능!
+      totalMoney: 3000, //우선 적용 미스인보다..
     };
   },
   methods: {},
