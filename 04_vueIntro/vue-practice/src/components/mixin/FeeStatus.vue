@@ -9,14 +9,17 @@
 </template>
 
 <script>
-import moneyMixin from "../../mixins/moneyMixins";
+import useMoney from "../../composables/useMoney";
 export default {
-  name: "feeStatus",
-  mixins: [moneyMixin],
-  data() {
-    return {};
+  name: "FeeStatus",
+  setup() {
+    const { addMoney, totalMoney } = useMoney();
+
+    return {
+      addMoney,
+      totalMoney,
+    };
   },
-  methods: {},
 };
 </script>
 

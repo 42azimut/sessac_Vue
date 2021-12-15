@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>Hello 53.Composition Life Cycle</h2>
+    <h2>Hello Hello 54. Reusability</h2>
   </div>
   <TestComponent />
 </template>
 
 <script>
-import TestComponent from "./components/composition/TestComponent";
+import TestComponent from "./components/composition/TestComponent.vue";
 export default {
   name: "App",
   components: { TestComponent },

@@ -1,16 +1,21 @@
 <template>
-  <h2>Hello LifeCycle</h2>
+  <h2>Hello Reusability</h2>
   <hr />
-  <ChildComponent firstname="Code" lastname="Azimut" @sendParent="sendParent" />
+  <FeeStatus />
+  <hr />
+  <ProductStatus />
+  <hr />
+  <SavingStatus />
 </template>
 
 <script>
-import ChildComponent from "./ChildComponent.vue";
-import {} from "vue";
+import FeeStatus from "../mixin/FeeStatus";
+import ProductStatus from "../mixin/ProductStatus";
+import SavingStatus from "../mixin/SavingStatus";
 
 export default {
   name: "TestComponent",
-  components: { ChildComponent },
+  components: { FeeStatus, ProductStatus, SavingStatus },
   methods: {
     sendParent() {
       console.log("parent event");
