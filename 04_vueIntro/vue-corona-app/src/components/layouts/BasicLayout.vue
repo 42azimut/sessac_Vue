@@ -2,7 +2,9 @@
   <el-container class="main">
     <el-header><BasicHeader /></el-header>
     <el-container>
-      <el-aside width="200px"><SideMenu /></el-aside>
+      <el-aside width="menuWidth"
+        ><SideMenu :isCollapse="isCollapse"
+      /></el-aside>
       <el-container>
         <el-main>Main</el-main>
       </el-container>
@@ -13,11 +15,23 @@
 <script>
 import BasicHeader from "./BasicHeader.vue";
 import SideMenu from "./SideMenu";
+import useBreakpoint from "@/composables/useBreakpoint.js";
+import { computed } from "vue";
 export default {
   name: "basicLayout",
   components: {
     BasicHeader,
     SideMenu,
+  },
+  setup() {
+    const { type } = useBreakpoint();
+
+    const isCollapse = computed(() => type.value === "sm");
+    const menuWidth = computed(() => (isCollapse.value ? "65px" : "200px"));
+    return {
+      isCollapse,
+      menuWidth,
+    };
   },
 };
 </script>
