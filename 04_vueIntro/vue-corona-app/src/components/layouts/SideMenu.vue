@@ -13,6 +13,7 @@
           </template>
 
           <el-menu-item
+            @click="handleSelect(item)"
             v-for="item in menu.submenus"
             :key="item.index"
             :index="item.index"
@@ -36,7 +37,7 @@ export default {
   props: {
     isCollapse: Boolean,
   },
-  setup() {
+  setup(props, context) {
     const state = reactive({
       menuItem: [
         {
@@ -63,20 +64,24 @@ export default {
           submenus: [
             {
               label: "샘플메뉴1",
-              index: "InternationalCases",
+              index: "sample1",
               path: "corona",
             },
             {
               label: "샘플메뉴2",
-              index: "DomesticCases",
+              index: "sample2",
               path: "corona",
             },
           ],
         },
       ],
     });
+    const handleSelect = (item) => {
+      context.emit("menuSelect", item);
+    };
     return {
       ...toRefs(state),
+      handleSelect,
     };
   },
 };
